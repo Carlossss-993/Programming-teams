@@ -1,0 +1,23 @@
+.App {
+  display: flex;
+  flex-direction: row;
+}
+
+/* .app-teamsDiv,
+.app-teamsFormDiv {
+  flex: 1;
+  width: 100px;
+} */
+
+.tf-form {
+  flex: 1;
+  width: 100%;
+}
+
+.app-teamsDiv {
+  background-color: lightgreen;
+}
+
+.app-teamsFormDiv {
+  background-color: lightpink;
+}
