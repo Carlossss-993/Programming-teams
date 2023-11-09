@@ -3,6 +3,8 @@ import './App.css'
 
 import { TeamForm } from './components/TeamForm'
 import { TeamSummary } from './components/TeamSummary'
+import { RegisterContests } from './components/RegisterContests'
+import { ContestRegistration } from './components/ContestRegistration'
 
 export function App() {
   const [members, setMembers] = React.useState(() => {
@@ -17,6 +19,12 @@ export function App() {
     return teamsFromStorage ? JSON.parse(teamsFromStorage) : []
   })
 
+  const [contests, setContests] = React.useState(() => {
+    // window.localStorage.removeItem('contests')
+    const contestsFromStorage = window.localStorage.getItem('contests')
+    return contestsFromStorage ? JSON.parse(contestsFromStorage) : []
+  })
+
   const handleAddTeam = (team) => {
     const newMembers = handleAddMembers(team.members)
     const newTeams = [...teams, team]
@@ -28,6 +36,10 @@ export function App() {
     setTeams(teams.filter((team, i) => i !== index))
   }
 
+  const handleRemoveContest = (index) => {
+    setContests(contests.filter((contestAux, i) => i !== index))
+  }
+
   const handleAddMembers = (memberList) => {
     let newMembers = [...members]
     for (const member of memberList) {
@@ -37,15 +49,33 @@ export function App() {
     return newMembers
   }
 
+  const handleAddContests = (contest) => {
+    const newContests = [...contests, contest]
+    setContests(newContests)
+    saveContest(newContests)
+    console.log(newContests)
+  }
+
   const saveData = (newTeams, newMembers) => {
-    window.localStorage.setItem('teams', JSON.stringify(newTeams))
-    window.localStorage.setItem('members', JSON.stringify(newMembers))
+    newTeams && window.localStorage.setItem('teams', JSON.stringify(newTeams))
+    newMembers &&
+      window.localStorage.setItem('members', JSON.stringify(newMembers))
+  }
+
+  const saveContest = (newContests) => {
+    newContests &&
+      window.localStorage.setItem('contests', JSON.stringify(newContests))
   }
 
   return (
     <>
       <TeamSummary teamsList={teams} onRemoveTeam={handleRemoveTeam} />
       <TeamForm onSubmitTeam={handleAddTeam} />
+      <RegisterContests onAddContests={handleAddContests} />
+      <ContestRegistration
+        contests={contests}
+        onRemoveContest={handleRemoveContest}
+      />
     </>
   )
 }

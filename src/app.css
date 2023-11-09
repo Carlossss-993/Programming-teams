@@ -5,7 +5,8 @@
 }
 
 .tf-form,
-.mf-form {
+.mf-form,
+.rc-form {
   display: flex;
   flex-direction: column;
   width: 400px;
@@ -18,6 +19,11 @@
 
 .mf-form {
   background-color: aquamarine;
+  width: 90%;
+}
+
+.rc-form {
+  background-color: rgb(197, 127, 255);
   width: 90%;
 }
 

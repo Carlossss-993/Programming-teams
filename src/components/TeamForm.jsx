@@ -8,7 +8,6 @@ import { LEVELS, LEVELS_ORDER } from '../constaints'
 
 export const TeamForm = ({ onSubmitTeam }) => {
   const [teamName, setTeamName] = React.useState('')
-  const [teamLevel, setTeamLevel] = React.useState('')
   const [members, setMembers] = React.useState([{}])
   const [availableLevels, setAvailableLevels] = React.useState([
     'Básico',
@@ -16,6 +15,7 @@ export const TeamForm = ({ onSubmitTeam }) => {
     'Avanzado',
     'Élite',
   ])
+  const [teamLevel, setTeamLevel] = React.useState(`${availableLevels[0]}`)
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -67,7 +67,7 @@ export const TeamForm = ({ onSubmitTeam }) => {
         }}
       />
       <SelectField
-        label='Nivel'
+        label='Categoría'
         value={teamLevel}
         required
         onChange={(e) => {

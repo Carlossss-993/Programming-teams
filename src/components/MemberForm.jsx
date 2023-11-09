@@ -7,7 +7,9 @@ export const MemberForm = ({ index, member, onDelete, onUpdate }) => {
   const [nameMember, setName] = React.useState(member.name || '')
   const [code, setCode] = React.useState(member.code || '')
   const [id, setId] = React.useState(member.id || '')
-  const [course, setCourse] = React.useState(member.course || '')
+  const [course, setCourse] = React.useState(
+    member.course || 'Programación Básica',
+  )
 
   const handleChange = (e) => {
     const { name, value } = e.target

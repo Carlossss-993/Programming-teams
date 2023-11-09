@@ -7,7 +7,7 @@ export function Team({ team, index, onRemoveTeam }) {
     <article className='t-team'>
       <strong>Nombre: {team.teamName}</strong>
       <p>Cantidad de Participantes: {team.members.length}</p>
-      <p>Categoría a Participar {team.teamLevel}</p>
+      <p>Categoría a Participar: {team.teamLevel}</p>
       <button onClick={handleRemoveTeam}>Eliminar Equipo</button>
     </article>
   )
